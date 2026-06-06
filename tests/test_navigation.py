@@ -9,7 +9,7 @@ class TestNavigation:
     def test_navigate_to_personal_account(self, driver, account_user):
         # Переход по клику в «Личный кабинет»
         WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.ORDER_BUTTON)
+            EC.element_to_be_clickable(Locators.PERSONAL_ACCOUNT_BUTTON)
         )
         driver.find_element(*Locators.PERSONAL_ACCOUNT_BUTTON).click()
 
@@ -21,7 +21,7 @@ class TestNavigation:
         # Переход из «Личного кабинета» в Конструктор
         
         WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.ORDER_BUTTON)
+            EC.element_to_be_clickable(Locators.PERSONAL_ACCOUNT_BUTTON)
         )
         driver.find_element(*Locators.PERSONAL_ACCOUNT_BUTTON).click()
         
@@ -37,7 +37,7 @@ class TestNavigation:
     def test_navigate_from_account_to_constructor_with_link(self, driver, account_user):
         # Переход из «Личного кабинета» в Конструктор по ссылке
         WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.ORDER_BUTTON)
+            EC.visibility_of_element_located(Locators.PERSONAL_ACCOUNT_BUTTON)
         )
         driver.find_element(*Locators.PERSONAL_ACCOUNT_BUTTON).click()
         
@@ -69,7 +69,7 @@ class TestNavigation:
         
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.BUNS_HEADER)
-        ).is_displayed
+        ).is_displayed()
 
     def test_navigate_to_section_sauces(self, driver):
         # Переход к разделу «Соусы»
@@ -81,7 +81,7 @@ class TestNavigation:
         
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.SAUCES_HEADER)
-        ).is_displayed
+        ).is_displayed()
        
     def test_navigate_to_section_filling_tabs(self, driver):
         # Переход к разделу «Начинки»
@@ -93,4 +93,4 @@ class TestNavigation:
         
         assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.FILLINGS_HEADER)
-        ).is_displayed
+        ).is_displayed()
