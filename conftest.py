@@ -1,12 +1,10 @@
 import pytest
 from selenium import webdriver
-import random
 from urls import REGISTER_PAGE, LOGIN_PAGE
-from helps import generate_email, generate_password
+from helpers import generate_email, generate_password, get_user_data
 from locators import Locators
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
 
 
 @pytest.fixture
@@ -16,14 +14,8 @@ def driver():
     driver.quit()
 
 @pytest.fixture
-def user_data():
-    email = generate_email()
-    password = generate_password()
-    name = 'Андрей'
-    return {'email': email, 'password': password, 'name': name}
-
-@pytest.fixture
-def registered_user(driver, user_data):
+def registered_user(driver):
+    user_data = get_user_data()
     driver.get(REGISTER_PAGE)
     WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located(Locators.NAME_INPUT)
