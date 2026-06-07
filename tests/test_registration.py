@@ -1,12 +1,14 @@
 from locators import Locators
 from urls import BASE_URL
+from helpers import get_user_data
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 class TestRegistration:
 
-    def test_successful_registration(self, driver, user_data):
+    def test_successful_registration(self, driver):
         """Успешная регистрация пользователя"""
+        user_data = get_user_data()
         driver.get(BASE_URL)
 
         WebDriverWait(driver, 10).until(
@@ -21,14 +23,13 @@ class TestRegistration:
 
         driver.find_element(*Locators.REGISTER_BUTTON).click()
 
-        WebDriverWait(driver, 10).until(
+        assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.LOGIN_HEADER)
-        )
-
-        assert driver.find_element(*Locators.LOGIN_HEADER).is_displayed()
-
-    def test_registration_with_invalid_password(self, driver, user_data):
+        ).is_displayed
+        
+    def test_registration_with_invalid_password(self, driver):
         """Регистрация с невалидным паролем (менее 6 символов)"""
+        user_data = get_user_data()
         invalid_user_data = user_data.copy()
         invalid_user_data["password"] = "12345"
 
@@ -46,8 +47,7 @@ class TestRegistration:
 
         driver.find_element(*Locators.REGISTER_BUTTON).click()
 
-        error_message = WebDriverWait(driver, 10).until(
+        assert WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located(Locators.PASSWORD_ERROR)
-        )
-
-        assert error_message.is_displayed()
+        ).is_displayed
+       
