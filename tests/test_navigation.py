@@ -60,7 +60,7 @@ class TestNavigation:
         ).click()
         
         WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.SAUCES_HEADER)
+            EC.visibility_of_element_located(Locators.SAUCES_TAB_ACT)
         )
 
         WebDriverWait(driver, 10).until(
@@ -68,7 +68,7 @@ class TestNavigation:
         ).click()
         
         assert WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.BUNS_HEADER)
+            EC.visibility_of_element_located(Locators.BUNS_TAB_ACT)
         ).is_displayed()
 
     def test_navigate_to_section_sauces(self, driver):
@@ -80,7 +80,7 @@ class TestNavigation:
         ).click()
         
         assert WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.SAUCES_HEADER)
+            EC.visibility_of_element_located(Locators.SAUCES_TAB_ACT)
         ).is_displayed()
        
     def test_navigate_to_section_filling_tabs(self, driver):
@@ -92,5 +92,6 @@ class TestNavigation:
         ).click()
         
         assert WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located(Locators.FILLINGS_HEADER)
+            EC.visibility_of_element_located(Locators.FILLINGS_TAB_ACT)
         ).is_displayed()
+        
