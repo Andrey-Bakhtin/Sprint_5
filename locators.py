@@ -53,8 +53,8 @@ class Locators:
     # "Начинки" в контрукторе
     FILLINGS_TAB = (By.XPATH, "//span[text()='Начинки']/parent::div")
     # Заголовок"Булки" 
-    BUNS_HEADER = (By.XPATH, "//h2[text()='Булки']")
+    BUNS_TAB_ACT = (By.XPATH, "//div[contains(@class, 'current') and span[text()='Булки']]")
     # Заголовок"Сосиски" 
-    SAUCES_HEADER = (By.XPATH, "//h2[text()='Соусы']")
+    SAUCES_TAB_ACT = (By.XPATH, "//div[contains(@class, 'current') and span[text()='Соусы']]")
     # Заголовок"Начинки" 
-    FILLINGS_HEADER = (By.XPATH, "//h2[text()='Начинки']")
+    FILLINGS_TAB_ACT = (By.XPATH, "//div[contains(@class, 'current') and span[text()='Начинки']]")
